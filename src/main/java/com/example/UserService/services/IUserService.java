@@ -9,7 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface IUserService {
-    Page<UserDto> findAll(Pageable pageable);
+    Page<UserDto> findAll(Integer page, Integer size);
 
     User findUserByUsername(String username);
     UserDto createUser(UserCreateDto userCreateDto);

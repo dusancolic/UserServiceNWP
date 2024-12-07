@@ -27,11 +27,12 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<UserDto>> getAllUsers(Pageable pageable){
+    public ResponseEntity<Page<UserDto>> getAllUsers(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "5") Integer size){
+        System.out.println("page: " + page + " size: " + size);
         CustomUserDetails customUserDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if(!customUserDetails.canRead())
             return ResponseEntity.status(403).build();
-        return ResponseEntity.ok(userService.findAll(pageable));
+        return ResponseEntity.ok(userService.findAll(page, size));
     }
     @GetMapping("{username}")
     public ResponseEntity<UserDto> getUserByUsername(@PathVariable String username){
@@ -58,7 +59,7 @@ public class UserController {
         return new ResponseEntity<>(userService.editUser(userEditDto), HttpStatus.OK);
     }
 
-    @DeleteMapping
+    @PutMapping("/delete")
     public ResponseEntity<UserDto> deleteUser(@RequestBody UserDeleteDto userDeleteDto){
         CustomUserDetails customUserDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if(!customUserDetails.canDelete())

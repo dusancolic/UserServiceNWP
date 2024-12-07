@@ -12,12 +12,15 @@ import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 import java.util.ArrayList;
@@ -34,8 +37,8 @@ public class UserService implements IUserService, UserDetailsService {
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public Page<UserDto> findAll(Pageable pageable) {
-        return userRepository.findAll(pageable).map(userMapper::userToUserDto);
+    public Page<UserDto> findAll(Integer page, Integer size) {
+        return this.userRepository.findAll(PageRequest.of(page, size, Sort.by("id").ascending())).map(userMapper :: userToUserDto);
     }
 
     @Override
