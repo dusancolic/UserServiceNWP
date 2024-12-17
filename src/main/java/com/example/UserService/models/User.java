@@ -23,4 +23,5 @@ public class User {
     private boolean can_update = false;
     private boolean can_delete = false;
     private boolean deleted = false;
+    private boolean admin = false;
 }

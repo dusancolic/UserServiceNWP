@@ -1,4 +1,4 @@
-package com.example.UserService.services;
+package com.example.UserService.services.implementation;
 
 import com.example.UserService.details.CustomUserDetails;
 import com.example.UserService.dtos.UserCreateDto;
@@ -8,22 +8,20 @@ import com.example.UserService.dtos.UserEditDto;
 import com.example.UserService.mappers.UserMapper;
 import com.example.UserService.models.User;
 import com.example.UserService.repositories.UserRepository;
+import com.example.UserService.services.IUserService;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 @Service

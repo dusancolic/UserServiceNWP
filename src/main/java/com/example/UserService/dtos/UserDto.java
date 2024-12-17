@@ -12,6 +12,7 @@ public class UserDto {
    private String firstname;
    private String lastname;
    private String username;
+   private boolean admin;
    private boolean can_read;
    private boolean can_create;
    private boolean can_update;

@@ -3,13 +3,11 @@ package com.example.UserService.controllers;
 import com.example.UserService.models.User;
 import com.example.UserService.requests.LoginRequest;
 import com.example.UserService.responses.LoginResponse;
-import com.example.UserService.services.UserService;
+import com.example.UserService.services.implementation.UserService;
 import com.example.UserService.utils.JwtUtil;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.token.Sha512DigestUtils;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
@@ -48,7 +46,8 @@ public class AuthController {
                         user.isCan_create(),
                         user.isCan_read(),
                         user.isCan_update(),
-                        user.isCan_delete()
+                        user.isCan_delete(),
+                        user.isAdmin()
                 ));
     }
 

@@ -22,6 +22,7 @@ public class UserMapper {
         userDto.setCan_delete(user.isCan_delete());
         userDto.setCan_update(user.isCan_update());
         userDto.setCan_create(user.isCan_create());
+        userDto.setAdmin(user.isAdmin());
 
         return userDto;
     }
