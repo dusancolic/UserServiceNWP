@@ -1,12 +1,11 @@
 package com.example.UserService.services;
 
-import com.example.UserService.dtos.UserCreateDto;
-import com.example.UserService.dtos.UserDeleteDto;
-import com.example.UserService.dtos.UserDto;
-import com.example.UserService.dtos.UserEditDto;
+import com.example.UserService.dtos.user.UserCreateDto;
+import com.example.UserService.dtos.user.UserDeleteDto;
+import com.example.UserService.dtos.user.UserDto;
+import com.example.UserService.dtos.user.UserEditDto;
 import com.example.UserService.models.User;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
 public interface IUserService {
     Page<UserDto> findAll(Integer page, Integer size);

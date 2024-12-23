@@ -1,8 +1,9 @@
 package com.example.UserService.services;
 
-import com.example.UserService.dtos.*;
-import com.example.UserService.models.Dish;
-import com.example.UserService.models.User;
+import com.example.UserService.dtos.dish.DishCreateDto;
+import com.example.UserService.dtos.dish.DishDeleteDto;
+import com.example.UserService.dtos.dish.DishDto;
+import com.example.UserService.dtos.dish.DishEditDto;
 import org.springframework.data.domain.Page;
 
 public interface IDishService {

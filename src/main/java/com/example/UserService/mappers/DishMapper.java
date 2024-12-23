@@ -1,6 +1,9 @@
 package com.example.UserService.mappers;
 
-import com.example.UserService.dtos.*;
+import com.example.UserService.dtos.dish.DishCreateDto;
+import com.example.UserService.dtos.dish.DishDeleteDto;
+import com.example.UserService.dtos.dish.DishDto;
+import com.example.UserService.dtos.dish.DishEditDto;
 import com.example.UserService.models.Dish;
 import org.springframework.stereotype.Component;
 

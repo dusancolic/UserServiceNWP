@@ -1,18 +1,16 @@
 package com.example.UserService.services.implementation;
 
-import com.example.UserService.dtos.DishCreateDto;
-import com.example.UserService.dtos.DishDeleteDto;
-import com.example.UserService.dtos.DishDto;
-import com.example.UserService.dtos.DishEditDto;
+import com.example.UserService.dtos.dish.DishCreateDto;
+import com.example.UserService.dtos.dish.DishDeleteDto;
+import com.example.UserService.dtos.dish.DishDto;
+import com.example.UserService.dtos.dish.DishEditDto;
 import com.example.UserService.mappers.DishMapper;
 import com.example.UserService.models.Dish;
-import com.example.UserService.models.User;
 import com.example.UserService.repositories.DishRepository;
 import com.example.UserService.services.IDishService;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.hibernate.annotations.DialectOverride;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;

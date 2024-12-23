@@ -1,11 +1,7 @@
 package com.example.UserService.services.implementation;
 
-import com.example.UserService.dtos.ErrorCreateDto;
-import com.example.UserService.dtos.ErrorDto;
+import com.example.UserService.dtos.error.ErrorDto;
 import com.example.UserService.mappers.ErrorMapper;
-import com.example.UserService.models.Dish;
-import com.example.UserService.models.Error;
-import com.example.UserService.models.User;
 import com.example.UserService.repositories.ErrorRepository;
 import com.example.UserService.services.IErrorService;
 import jakarta.transaction.Transactional;
@@ -35,10 +31,4 @@ public class ErrorService implements IErrorService {
         return errorRepository.findAllByUsername(PageRequest.of(page, size, Sort.by("id").descending()),username).map(errorMapper :: errorToErrorDto);
     }
 
-    @Override
-    public ErrorDto createError(ErrorCreateDto errorCreateDto, User user) {
-        Error error = errorMapper.errorCreateDtoToError(errorCreateDto);
-        Error createdError = errorRepository.save(error);
-        return errorMapper.errorToErrorDto(createdError);
-    }
 }

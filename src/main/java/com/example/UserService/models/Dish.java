@@ -19,4 +19,9 @@ public class Dish {
     private String name;
     private Double price;
     private boolean deleted = false;
+
+    @Override
+    public String toString() {
+        return  name + " - " + price + " din";
+    }
 }

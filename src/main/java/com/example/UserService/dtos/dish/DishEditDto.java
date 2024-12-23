@@ -1,5 +1,4 @@
-package com.example.UserService.dtos;
-
+package com.example.UserService.dtos.dish;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,8 +7,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class OrderEditDto {
-
+public class DishEditDto {
     private Long id;
-    private String orderStatus;
+    private String name;
+    private Double price;
 }

@@ -1,4 +1,4 @@
-package com.example.UserService.dtos;
+package com.example.UserService.dtos.order;
 
 import com.example.UserService.models.User;
 import lombok.AllArgsConstructor;
@@ -20,8 +20,8 @@ public class OrderDto {
 
     @Override
     public String toString(){
-        return "id: " + id + "orderedBy: " + orderedBy.getUsername() + "status: " +
-                orderStatus + "active: " + active + "ordered at: " + orderedAt;
+        return "id: " + id + " orderedBy: " + orderedBy.getUsername() + " status: " +
+                orderStatus + " active: " + active + " ordered at: " + orderedAt;
     }
 
 }

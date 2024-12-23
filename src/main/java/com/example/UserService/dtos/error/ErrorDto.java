@@ -1,7 +1,6 @@
-package com.example.UserService.dtos;
+package com.example.UserService.dtos.error;
 
 import com.example.UserService.models.Order;
-import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +12,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class ErrorDto {
     private Long id;
-    private Order order;
+    private String order;
+    private String user;
     private String message;
     private LocalDateTime time;
     private String operation;

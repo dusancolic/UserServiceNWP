@@ -1,10 +1,10 @@
 package com.example.UserService.mappers;
 
-import com.example.UserService.dtos.*;
+import com.example.UserService.dtos.order.OrderCreateDto;
+import com.example.UserService.dtos.order.OrderDto;
+import com.example.UserService.dtos.order.OrderEditDto;
 import com.example.UserService.models.*;
 import org.springframework.stereotype.Component;
-
-import java.util.stream.Collectors;
 
 @Component
 public class OrderMapper {
@@ -19,14 +19,6 @@ public class OrderMapper {
         orderDto.setOrderedAt(order.getOrderedAt());
         System.out.println("order mapper: " + orderDto);
         return orderDto;
-    }
-
-    public Order orderCreateDtoToOrder(OrderCreateDto orderCreateDto, User user)
-    {
-        Order order = new Order();
-        order.setOrderedBy(user);
-
-        return order;
     }
 
     public Order orderEditDtoToOrder(Order order, OrderEditDto orderEditDto) {

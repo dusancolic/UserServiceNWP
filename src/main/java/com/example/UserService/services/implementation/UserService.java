@@ -1,10 +1,10 @@
 package com.example.UserService.services.implementation;
 
 import com.example.UserService.details.CustomUserDetails;
-import com.example.UserService.dtos.UserCreateDto;
-import com.example.UserService.dtos.UserDeleteDto;
-import com.example.UserService.dtos.UserDto;
-import com.example.UserService.dtos.UserEditDto;
+import com.example.UserService.dtos.user.UserCreateDto;
+import com.example.UserService.dtos.user.UserDeleteDto;
+import com.example.UserService.dtos.user.UserDto;
+import com.example.UserService.dtos.user.UserEditDto;
 import com.example.UserService.mappers.UserMapper;
 import com.example.UserService.models.User;
 import com.example.UserService.repositories.UserRepository;

@@ -1,7 +1,6 @@
-package com.example.UserService.dtos;
+package com.example.UserService.dtos.order;
 
 import com.example.UserService.models.Dish;
-import com.example.UserService.models.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

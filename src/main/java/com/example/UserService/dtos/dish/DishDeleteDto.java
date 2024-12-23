@@ -1,4 +1,4 @@
-package com.example.UserService.dtos;
+package com.example.UserService.dtos.dish;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class UserDeleteDto {
-    private String username;
+public class DishDeleteDto {
+
+    private String name;
     private boolean deleted;
 }

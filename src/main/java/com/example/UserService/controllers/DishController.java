@@ -1,9 +1,11 @@
 package com.example.UserService.controllers;
 
 import com.example.UserService.details.CustomUserDetails;
-import com.example.UserService.dtos.*;
+import com.example.UserService.dtos.dish.DishCreateDto;
+import com.example.UserService.dtos.dish.DishDeleteDto;
+import com.example.UserService.dtos.dish.DishDto;
+import com.example.UserService.dtos.dish.DishEditDto;
 import com.example.UserService.services.implementation.DishService;
-import com.example.UserService.services.implementation.UserService;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

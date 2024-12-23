@@ -16,9 +16,10 @@ public class Error {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne(optional = false)
-    private Order order;
+    private String forOrder;
     private String message;
+    @ManyToOne(optional = false)
+    private User user;
     private LocalDateTime time;
     private String operation;
 

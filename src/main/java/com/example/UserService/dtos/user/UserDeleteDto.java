@@ -1,16 +1,13 @@
-package com.example.UserService.dtos;
+package com.example.UserService.dtos.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class DishDto {
-
-    private Long id;
-    private String name;
-    private Double price;
+@Data
+public class UserDeleteDto {
+    private String username;
     private boolean deleted;
 }

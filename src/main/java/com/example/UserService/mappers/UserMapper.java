@@ -1,9 +1,9 @@
 package com.example.UserService.mappers;
 
-import com.example.UserService.dtos.UserCreateDto;
-import com.example.UserService.dtos.UserDeleteDto;
-import com.example.UserService.dtos.UserDto;
-import com.example.UserService.dtos.UserEditDto;
+import com.example.UserService.dtos.user.UserCreateDto;
+import com.example.UserService.dtos.user.UserDeleteDto;
+import com.example.UserService.dtos.user.UserDto;
+import com.example.UserService.dtos.user.UserEditDto;
 import com.example.UserService.models.User;
 import org.springframework.stereotype.Component;
 
