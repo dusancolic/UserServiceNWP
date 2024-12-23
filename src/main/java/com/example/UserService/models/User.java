@@ -22,6 +22,11 @@ public class User {
     private boolean can_create = false;
     private boolean can_update = false;
     private boolean can_delete = false;
+    private boolean can_search_order = false;
+    private boolean can_place_order = false;
+    private boolean can_cancel_order = false;
+    private boolean can_track_order = false;
+    private boolean can_schedule_order = false;
     private boolean deleted = false;
     private boolean admin = false;
 }

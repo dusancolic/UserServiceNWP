@@ -17,5 +17,10 @@ public class UserDto {
    private boolean can_create;
    private boolean can_update;
    private boolean can_delete;
+   private boolean can_search_order = false;
+   private boolean can_place_order = false;
+   private boolean can_cancel_order = false;
+   private boolean can_track_order = false;
+   private boolean can_schedule_order = false;
    private boolean deleted;
 }

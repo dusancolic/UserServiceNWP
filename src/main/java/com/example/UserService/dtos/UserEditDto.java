@@ -21,4 +21,9 @@ public class UserEditDto {
     private boolean can_create;
     private boolean can_update;
     private boolean can_delete;
+    private boolean can_search_order;
+    private boolean can_place_order;
+    private boolean can_cancel_order;
+    private boolean can_track_order;
+    private boolean can_schedule_order;
 }

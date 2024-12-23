@@ -47,6 +47,11 @@ public class AuthController {
                         user.isCan_read(),
                         user.isCan_update(),
                         user.isCan_delete(),
+                        user.isCan_search_order(),
+                        user.isCan_place_order(),
+                        user.isCan_cancel_order(),
+                        user.isCan_track_order(),
+                        user.isCan_schedule_order(),
                         user.isAdmin()
                 ));
     }

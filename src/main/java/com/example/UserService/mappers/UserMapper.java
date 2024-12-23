@@ -22,6 +22,11 @@ public class UserMapper {
         userDto.setCan_delete(user.isCan_delete());
         userDto.setCan_update(user.isCan_update());
         userDto.setCan_create(user.isCan_create());
+        userDto.setCan_search_order(user.isCan_search_order());
+        userDto.setCan_place_order(user.isCan_place_order());
+        userDto.setCan_cancel_order(user.isCan_cancel_order());
+        userDto.setCan_track_order(user.isCan_track_order());
+        userDto.setCan_schedule_order(user.isCan_schedule_order());
         userDto.setAdmin(user.isAdmin());
 
         return userDto;
@@ -38,6 +43,11 @@ public class UserMapper {
         user.setCan_create(userCreateDto.isCan_create());
         user.setCan_update(userCreateDto.isCan_update());
         user.setCan_delete(userCreateDto.isCan_delete());
+        user.setCan_cancel_order(userCreateDto.isCan_cancel_order());
+        user.setCan_place_order(userCreateDto.isCan_place_order());
+        user.setCan_search_order(userCreateDto.isCan_search_order());
+        user.setCan_schedule_order(userCreateDto.isCan_schedule_order());
+        user.setCan_track_order(userCreateDto.isCan_track_order());
         user.setDeleted(false);
         return user;
     }
@@ -55,6 +65,11 @@ public class UserMapper {
         user.setCan_create(userEditDto.isCan_create());
         user.setCan_update(userEditDto.isCan_update());
         user.setCan_delete(userEditDto.isCan_delete());
+        user.setCan_cancel_order(userEditDto.isCan_cancel_order());
+        user.setCan_place_order(userEditDto.isCan_place_order());
+        user.setCan_search_order(userEditDto.isCan_search_order());
+        user.setCan_track_order(userEditDto.isCan_track_order());
+        user.setCan_schedule_order(userEditDto.isCan_schedule_order());
         return user;
     }
 }
