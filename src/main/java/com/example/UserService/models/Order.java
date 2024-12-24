@@ -30,9 +30,15 @@ public class Order {
 
     private boolean active = true;
 
-    @OneToMany(mappedBy = "order1", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "order1", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<OrderItem> items = new ArrayList<>();
 
     private LocalDateTime orderedAt = LocalDateTime.now();
+
+    @Override
+    public String toString(){
+        return "id: " + id + " orderedBy: " + orderedBy.getUsername() + " number of items: " + items.size() + " status: " +
+                orderStatus + " active: " + active + " ordered at: " + orderedAt;
+    }
 
 }

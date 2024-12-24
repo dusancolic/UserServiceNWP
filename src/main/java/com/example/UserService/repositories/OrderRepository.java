@@ -20,4 +20,7 @@ public interface OrderRepository extends JpaRepository<Order, Long>, JpaSpecific
 //    Page<Order> findAllByUsername(Pageable pageable, String username);
     @Query("select count(o) from Order o where o.orderStatus in (:statuses)")
     Integer numberOfOrdersInProgress(@Param("statuses") List<OrderStatus> statuses);
+
+    @Query("select o from Order o where o.orderStatus = :status")
+    List<Order> findAllOrdersWithOrderStatus(@Param("status") OrderStatus status);
 }

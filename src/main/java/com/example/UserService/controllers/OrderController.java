@@ -1,9 +1,7 @@
 package com.example.UserService.controllers;
 
 import com.example.UserService.details.CustomUserDetails;
-import com.example.UserService.dtos.order.OrderCreateDto;
-import com.example.UserService.dtos.order.OrderDto;
-import com.example.UserService.dtos.order.OrderEditDto;
+import com.example.UserService.dtos.order.*;
 import com.example.UserService.models.Order;
 import com.example.UserService.models.OrderStatus;
 import com.example.UserService.services.implementation.OrderService;
@@ -39,21 +37,18 @@ public class OrderController {
         return ResponseEntity.ok(orderService.findAllByUsername(page, size, customUserDetails.getUsername()));
     }*/
 
-    @GetMapping
+    @PostMapping("/search")
     public ResponseEntity<Page<OrderDto>> getAllOrders(@RequestParam(defaultValue = "0") Integer page,
                                                        @RequestParam(defaultValue = "5") Integer size,
-                                                       @RequestParam(required = false) LocalDateTime from,
-                                                       @RequestParam(required = false) LocalDateTime to,
-                                                       @RequestParam(required = false) Long userId,
-                                                       @RequestParam(required = false) List<OrderStatus> statuses){
-        System.out.println("page: " + page + " size: " + size + " from: " + from + " to: " + to + " userId: " + userId + " statuses: " + statuses);
+                                                       @RequestBody OrderSearchDto orderSearchDto){
+        System.out.println("page: " + page + " size: " + size + " from: " + orderSearchDto.getFrom() + " to: " + orderSearchDto.getTo() + " userId: " + orderSearchDto.getUserId()
+                + " statuses: " + orderSearchDto.getStatuses());
         CustomUserDetails customUserDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if(!customUserDetails.canSearchOrder())
             return ResponseEntity.status(403).build();
         if(!customUserDetails.isAdmin())
-            userId = Long.valueOf(customUserDetails.getUser().getId());
-        //TODO can search
-        return ResponseEntity.ok(orderService.searchOrders(page, size, from, to, userId, statuses));
+            orderSearchDto.setUserId(Long.valueOf(customUserDetails.getUser().getId()));
+        return ResponseEntity.ok(orderService.searchOrders(page, size, orderSearchDto));
     }
 
     @PostMapping
@@ -62,10 +57,21 @@ public class OrderController {
         CustomUserDetails customUserDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if(!customUserDetails.canPlaceOrder())
             return ResponseEntity.status(403).build();
-        OrderDto orderDto = orderService.createOrder(orderCreateDto, customUserDetails.getUser(), false);
+        OrderDto orderDto = orderService.createOrder(orderCreateDto, customUserDetails.getUser());
         if(orderDto != null)
             return new ResponseEntity<>(orderDto, HttpStatus.CREATED);
         return ResponseEntity.status(429).build();
+    }
+
+    @PostMapping("/schedule")
+    public ResponseEntity<OrderDto> scheduleOrder(@RequestBody OrderScheduleDto orderScheduleDto){
+        CustomUserDetails customUserDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if(!customUserDetails.canScheduleOrder())
+            return ResponseEntity.status(403).build();
+        OrderDto orderDto = orderService.scheduleOrder(orderScheduleDto, customUserDetails.getUser());
+
+        return new ResponseEntity<>(orderDto, HttpStatus.CREATED);
     }
 
     @PutMapping

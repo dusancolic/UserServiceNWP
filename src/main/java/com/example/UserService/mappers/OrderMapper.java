@@ -6,6 +6,8 @@ import com.example.UserService.dtos.order.OrderEditDto;
 import com.example.UserService.models.*;
 import org.springframework.stereotype.Component;
 
+import java.util.stream.Collectors;
+
 @Component
 public class OrderMapper {
 
@@ -17,7 +19,10 @@ public class OrderMapper {
         orderDto.setOrderedBy(order.getOrderedBy());
         orderDto.setOrderStatus(String.valueOf(order.getOrderStatus()));
         orderDto.setOrderedAt(order.getOrderedAt());
-        System.out.println("order mapper: " + orderDto);
+        String dishes = order.getItems().stream()
+                .map(orderItem -> orderItem.getDish().toString())
+                .collect(Collectors.joining(", "));
+        orderDto.setDishes(dishes);
         return orderDto;
     }
 
@@ -27,4 +32,5 @@ public class OrderMapper {
             order.setActive(false);
         return order;
     }
+
 }

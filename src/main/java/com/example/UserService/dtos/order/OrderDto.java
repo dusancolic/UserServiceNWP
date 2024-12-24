@@ -16,11 +16,12 @@ public class OrderDto {
     private String orderStatus;
     private boolean active;
     private LocalDateTime orderedAt;
+    private String dishes;
 
 
     @Override
     public String toString(){
-        return "id: " + id + " orderedBy: " + orderedBy.getUsername() + " status: " +
+        return "id: " + id + " orderedBy: " + orderedBy.getUsername() + " " + dishes + " status: " +
                 orderStatus + " active: " + active + " ordered at: " + orderedAt;
     }
 
