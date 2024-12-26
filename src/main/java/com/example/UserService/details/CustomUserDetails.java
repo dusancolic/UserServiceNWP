@@ -35,9 +35,7 @@ public class CustomUserDetails extends org.springframework.security.core.userdet
         return user.isCan_delete();
     }
 
-    public boolean isAdmin() {
-        return user.isAdmin();
-    }
+    public boolean isAdmin()  { return user.isAdmin(); }
 
     public boolean canSearchOrder() {
         return user.isCan_search_order();

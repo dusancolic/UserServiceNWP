@@ -42,7 +42,7 @@ public class UserService implements IUserService, UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         System.out.println("Pronalazak korisnika sa username-om: " + username);
-        System.out.println(userRepository.findAll().size() + "  <- size");
+
         User user = findUserByUsername(username);
 
         if (user == null || user.isDeleted()) {

@@ -45,7 +45,7 @@ public class OrderService implements IOrderService {
     public Page<OrderDto> searchOrders(Integer page, Integer size, OrderSearchDto orderSearchDto) {
         Specification<Order> spec = Specification.where(orderSearchDto.getFrom() != null? OrderSpecification.withDateFrom(orderSearchDto.getFrom()) : null)
                 .and(orderSearchDto.getTo() != null? OrderSpecification.withDateTo(orderSearchDto.getTo()) : null)
-                .and(orderSearchDto.getUserId() != null? OrderSpecification.byUserId(orderSearchDto.getUserId()) : null)
+                .and(orderSearchDto.getUsername() != null? OrderSpecification.byUsername(orderSearchDto.getUsername()) : null)
                 .and(!Objects.isNull(orderSearchDto.getStatuses()) && !orderSearchDto.getStatuses().isEmpty()? OrderSpecification.withStatuses(orderSearchDto.getStatuses()) : null);
 
         return orderRepository.findAll(spec, PageRequest.of(page, size, Sort.by("id").descending())).map(orderMapper :: orderToOrderDto);

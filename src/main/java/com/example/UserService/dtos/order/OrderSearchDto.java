@@ -15,6 +15,6 @@ public class OrderSearchDto {
 
    private LocalDateTime from;
    private LocalDateTime to;
-   private Long userId;
+   private String username;
    private List<OrderStatus> statuses;
 }

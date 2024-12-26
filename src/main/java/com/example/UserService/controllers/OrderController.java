@@ -41,13 +41,13 @@ public class OrderController {
     public ResponseEntity<Page<OrderDto>> getAllOrders(@RequestParam(defaultValue = "0") Integer page,
                                                        @RequestParam(defaultValue = "5") Integer size,
                                                        @RequestBody OrderSearchDto orderSearchDto){
-        System.out.println("page: " + page + " size: " + size + " from: " + orderSearchDto.getFrom() + " to: " + orderSearchDto.getTo() + " userId: " + orderSearchDto.getUserId()
+        System.out.println("page: " + page + " size: " + size + " from: " + orderSearchDto.getFrom() + " to: " + orderSearchDto.getTo() + " username: " + orderSearchDto.getUsername()
                 + " statuses: " + orderSearchDto.getStatuses());
         CustomUserDetails customUserDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if(!customUserDetails.canSearchOrder())
             return ResponseEntity.status(403).build();
         if(!customUserDetails.isAdmin())
-            orderSearchDto.setUserId(Long.valueOf(customUserDetails.getUser().getId()));
+            orderSearchDto.setUsername(customUserDetails.getUser().getUsername());
         return ResponseEntity.ok(orderService.searchOrders(page, size, orderSearchDto));
     }
 

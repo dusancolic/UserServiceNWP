@@ -33,6 +33,7 @@ public class AuthController {
             UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword());
             System.out.println("aaa " + token.getName());
             user = userService.findUserByUsername(loginRequest.getUsername());
+            System.out.println("login : " + user.isAdmin());
             authenticationManager.authenticate(token);
             System.out.println("Authenticated");
         } catch (Exception e){

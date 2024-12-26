@@ -27,7 +27,9 @@ public class UserMapper {
         userDto.setCan_cancel_order(user.isCan_cancel_order());
         userDto.setCan_track_order(user.isCan_track_order());
         userDto.setCan_schedule_order(user.isCan_schedule_order());
+        System.out.println("Mapper 1: " + user.isAdmin());
         userDto.setAdmin(user.isAdmin());
+        System.out.println("Mapper 2: " + userDto.isAdmin());
 
         return userDto;
     }
@@ -48,6 +50,7 @@ public class UserMapper {
         user.setCan_search_order(userCreateDto.isCan_search_order());
         user.setCan_schedule_order(userCreateDto.isCan_schedule_order());
         user.setCan_track_order(userCreateDto.isCan_track_order());
+        user.setAdmin(false);
         user.setDeleted(false);
         return user;
     }

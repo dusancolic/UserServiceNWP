@@ -18,8 +18,8 @@ public class LoginResponse {
 
 
     public LoginResponse(String jwt, boolean can_create, boolean can_read, boolean can_update,
-                         boolean can_delete, boolean admin, boolean can_search_order, boolean can_place_order,
-                         boolean can_cancel_order, boolean can_track_order, boolean can_schedule_order) {
+                         boolean can_delete,  boolean can_search_order, boolean can_place_order,
+                         boolean can_cancel_order, boolean can_track_order, boolean can_schedule_order, boolean admin) {
         this.jwt = jwt;
         this.can_create = can_create;
         this.can_read = can_read;

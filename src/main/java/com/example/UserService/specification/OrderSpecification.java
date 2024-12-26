@@ -19,9 +19,9 @@ public class OrderSpecification {
                 criteriaBuilder.lessThanOrEqualTo(root.get("orderedAt"), dateTo);
     }
 
-    public static Specification<Order> byUserId(Long userId) {
+    public static Specification<Order> byUsername(String username) {
         return (root, query, criteriaBuilder) ->
-                criteriaBuilder.equal(root.get("orderedBy").get("id"), userId);
+                criteriaBuilder.equal(root.get("orderedBy").get("username"), username);
     }
 
     public static Specification<Order> withStatuses(List<OrderStatus> statuses) {
