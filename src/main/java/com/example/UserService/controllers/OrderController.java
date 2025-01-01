@@ -25,18 +25,6 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-  /*  @GetMapping
-    public ResponseEntity<Page<OrderDto>> getAllOrders(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "5") Integer size){
-        System.out.println("page: " + page + " size: " + size);
-        CustomUserDetails customUserDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if(!customUserDetails.canSearchOrder())
-            return ResponseEntity.status(403).build();
-
-        if(customUserDetails.isAdmin())
-            return ResponseEntity.ok(orderService.findAll(page, size));
-        return ResponseEntity.ok(orderService.findAllByUsername(page, size, customUserDetails.getUsername()));
-    }*/
-
     @PostMapping("/search")
     public ResponseEntity<Page<OrderDto>> getAllOrders(@RequestParam(defaultValue = "0") Integer page,
                                                        @RequestParam(defaultValue = "5") Integer size,

@@ -18,6 +18,8 @@ public interface IOrderService {
     OrderDto editOrder(OrderEditDto orderEditDto);
     OrderDto scheduleOrder(OrderScheduleDto orderScheduleDto, User user);
     OrderDto fromScheduledToOrdered(Order order);
+    String getOrderStatus(Long id);
 
-
+    // Metoda koja ažurira status porudžbine asinhrono
+    void updateOrderStatus(Order order);
 }

@@ -30,6 +30,7 @@ public class Order {
 
     private boolean active = true;
 
+
     @OneToMany(mappedBy = "order1", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<OrderItem> items = new ArrayList<>();
 

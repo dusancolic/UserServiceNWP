@@ -38,6 +38,12 @@ public class JwtFilter extends OncePerRequestFilter {
             jwt = authHeader.substring(7);
             email = jwtUtil.extractUsername(jwt);
         }
+
+        if (jwt == null && httpServletRequest.getParameter("jwt") != null) {
+            jwt = httpServletRequest.getParameter("jwt");
+            email = jwtUtil.extractUsername(jwt);
+        }
+
         System.out.println("jwt " + jwt);
         System.out.println("email " + email);
         System.out.println("auth header " + authHeader);
