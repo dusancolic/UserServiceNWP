@@ -53,8 +53,8 @@ public class OrderService implements IOrderService {
 
     @Override
     public OrderDto createOrder(OrderCreateDto orderCreateDto, User user) {
-        List<OrderStatus> statuses = new ArrayList<>(List.of(OrderStatus.PREPARING, OrderStatus.IN_DELIVERY));
-        if (orderRepository.numberOfOrdersInProgress(statuses) == 3) {
+        List<OrderStatus> statuses = new ArrayList<>(List.of(OrderStatus.PREPARING, OrderStatus.IN_DELIVERY, OrderStatus.ORDERED));
+        if (orderRepository.numberOfOrdersInProgress(statuses) >= 3) {
             Error error = new Error();
             String dishes = orderCreateDto.getDishes().toString().substring(1, orderCreateDto.getDishes().toString().length() - 1);
             error.setForOrder(dishes);
@@ -101,8 +101,8 @@ public class OrderService implements IOrderService {
     @Override
     public OrderDto fromScheduledToOrdered(Order order) {
         User user = order.getOrderedBy();
-        List<OrderStatus> statuses = new ArrayList<>(List.of(OrderStatus.PREPARING, OrderStatus.IN_DELIVERY));
-        if (orderRepository.numberOfOrdersInProgress(statuses) == 3) {
+        List<OrderStatus> statuses = new ArrayList<>(List.of(OrderStatus.PREPARING, OrderStatus.IN_DELIVERY, OrderStatus.ORDERED));
+        if (orderRepository.numberOfOrdersInProgress(statuses) >= 3) {
             Error error = new Error();
             String dishes = order.getItems().stream()
                     .map(orderItem -> orderItem.getDish().toString())
@@ -155,17 +155,22 @@ public class OrderService implements IOrderService {
     @Async
     protected void scheduleStatusUpdate(Order order, OrderStatus nextStatus, long delayInSeconds, Runnable nextTask) {
         Executors.newSingleThreadScheduledExecutor().schedule(() -> {
-            order.setOrderStatus(nextStatus);
-            if(nextStatus.equals(OrderStatus.DELIVERED))
-                order.setActive(false);
-            orderRepository.save(order);
-            sendOrderUpdate(order);
+            Optional<Order> optionalOrder = orderRepository.findById(order.getId());
+            if (optionalOrder.isPresent() && optionalOrder.get().getOrderStatus() != OrderStatus.CANCELED) {
+                order.setOrderStatus(nextStatus);
+                if (nextStatus.equals(OrderStatus.DELIVERED)) {
+                    order.setActive(false);
+                }
+                orderRepository.save(order);
+                sendOrderUpdate(order);
 
-            if (nextTask != null) {
-                nextTask.run();
+                if (nextTask != null) {
+                    nextTask.run();
+                }
             }
         }, delayInSeconds, TimeUnit.SECONDS);
     }
+
 
     @Async
     public void sendOrderUpdate(Order order) {
